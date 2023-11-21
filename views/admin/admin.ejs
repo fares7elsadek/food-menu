@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Dashboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/dashboard.css">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="admin-badge">
+        <p>Admin</p>
+    </div>
+    <section class="menu">
+        <div class="menu-btns">
+            <form action="/product/" method="GET">
+                <button type="submit" class="menu-btn active-btn" id="featured">Return to Home page</button>
+            </form>
+
+            <form action="/admin/add" method="GET">
+                <button class="menu-btn" id="add-product-btn">Add New Product</button>
+            </form>
+            
+        </div>
+        <div class="food-items">
+            <!-- item -->
+            <% for(let products of prods) { %>
+            <div class="food-item featured">
+                <div class="food-img">
+                    <img src="../../uploads/<%= products.photo %>" alt="food image">
+                </div>
+                <div class="food-content">
+                    <h2 class="food-name"><%= products.name %></h2>
+                    <div class="line"></div>
+                    <h3 class="food-price"><%= products.price %>LE</h3>
+                    <ul class="rating">
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="far fa-star"></i></li>
+                    </ul>
+                    <p class="category">Categories: <span><%= products.kind %></span></p>
+                    <!-- Add update and delete buttons -->
+                    <form action="/admin/delete/<%= products.id %>" method="POST">
+                        <button type="submit" class="update-btn" id="featured">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <%}%>
+            <!-- end of item -->
+        </div>
+    </section>
+    <!-- ... rest of your code ... -->
+</body>
+</html>

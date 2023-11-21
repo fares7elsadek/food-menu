@@ -1,0 +1,48 @@
+<!-- addprod.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add New Product</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/addprod.css">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="admin-badge">
+        <p>Admin</p>
+    </div>
+    <section class="menu">
+        <div class="food-items">
+            <!-- Add the form container -->
+            <div class="form-container">
+                <h2>Add New Product</h2>
+                <form id="add-product-form" enctype="multipart/form-data" action="/admin/add" method="POST">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="name" required>
+
+                    <label for="productPrice">Product Price:</label>
+                    <input type="number" id="productPrice" name="price" required>
+
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" id="productImage" name="photo" accept="image/*" required>
+
+                    <label for="productCategory">Product Category:</label>
+                    <select id="productCategory" name="kind" required>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
+
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

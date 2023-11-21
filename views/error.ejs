@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Not Found</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/main.css">
+        <!-- fontawesome icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+      </head>
+<body>
+        <div class="admin-link">
+            <a href="/admin/login">Admin Login</a>
+        </div>
+    
+    <section class = "menu">
+    <div class = "menu-container">
+        <div class = "menu-head">
+          <h2>Special Food Menu</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod accusantium porro tempora aliquid officiis voluptate necessitatibus minus obcaecati. Quod perferendis numquam dignissimos odio nobis asperiores!</p>
+        </div>
+  
+        <div class = "menu-btns">
+          <form action="/product/breakfast" method="GET">
+            <button type = "submit" class = "menu-btn active-btn" id = "featured">Breakfast</button>
+          </form>
+          <form action="/product/dinner" method="GET">
+            <button type = "submit" class = "menu-btn" id = "today-special">Dinner</button>
+          </form>
+          <form action="/product/lunch" method="GET">
+            <button type = "submit" class = "menu-btn" id = "new-arrival">Lunch</button>
+          </form>
+        </div>
+        <% if (locals.message) { %>
+            <div class="message-label">
+                <%= message %>
+            </div>
+        <% }else {%>
+        <h1>Not Found</h1>
+        <%}%>
+    </section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* login-style.css */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../uploads/bag.jpg'); /* Replace 'path/to/your/photo.jpg' with the actual path to your photo */
+    background-size: cover; /* This property ensures that the background image covers the entire body */
+    background-position: center; /* This property centers the background image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* Adjusted max-width for larger screens */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #44355b;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #44355b;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #ff9505;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #e58205;
+}
+
+.message-label {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 14px;
+    margin-top: 8px;
+}
