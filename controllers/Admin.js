@@ -4,11 +4,10 @@ const appError = require('../utils/appError');
 const fs = require('fs');
 const asynWrapper = require('../middleware/asyncWrapper');
 const jwt = require('jsonwebtoken');
-const { body,validationResult} = require('express-validator');
+const cloudinary = require('cloudinary').v2;
+const axios = require('axios');
+const { body,validationResult, Result} = require('express-validator');
 const path = require('path');
-
-
-
 
 
 //login
@@ -40,7 +39,6 @@ const login = asynWrapper(async (req,res,next)=>{
 const Addproduct = asynWrapper(async (req,res,next)=>{
     const err=validationResult(req);
     const { name ,kind, price }=req.body;
-    console.log(req.body);
     if(!err.isEmpty()){
         console.log("hello")
         const statusCode = 400;
@@ -49,18 +47,20 @@ const Addproduct = asynWrapper(async (req,res,next)=>{
         const error = appError.create(message,statusCode,statusText);
         return next(error);
     }
-    let filename;
-    if(req.file.filename){
-        filename=req.file.filename;
-    }else{
-        filename="product.jpg";
-    }
-    console.log("hello")
+    let imagePath= path.join(__dirname, '..', 'uploads', req.file.filename);
+    cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET
+    });
+    await cloudinary.uploader.upload(imagePath).then(result=>{
+       imageUrl = cloudinary.url(result.public_id);
+    });
     const product = new Product({
         name,
         kind,
         price,
-        photo: filename
+        photo: imageUrl
     });
     await product.save();
     res.redirect('/admin/dashboard');
